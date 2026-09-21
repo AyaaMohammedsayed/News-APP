@@ -6,4 +6,7 @@ class AppImages {
   static const String sceince = 'assets/images/sceince.png';
   static const String sports = 'assets/images/sports.png';
   static const String technology = 'assets/images/tech.png';
+  static const String theme = 'assets/icons/theme.svg';
+  static const String language = 'assets/icons/language.svg';
+  static const String home = 'assets/icons/home.svg';
 }
