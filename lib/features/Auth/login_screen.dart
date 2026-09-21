@@ -1,114 +1,121 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:news/core/firebase_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news/core/Theme/app_theme.dart';
+import 'package:news/core/constants/app_images.dart';
 import 'package:news/core/provider/user.dart';
-import 'package:news/core/utils/error_indicator.dart';
 import 'package:news/core/utils/util.dart';
+import 'package:news/core/utils/validator.dart';
 import 'package:news/core/widgets/default_elevated_button.dart';
 import 'package:news/core/widgets/default_text_form_field.dart';
+
+import 'package:news/features/Auth/data/firebase_service.dart';
 import 'package:news/features/Auth/register_screen.dart';
+import 'package:news/features/Auth/view_model/auth_cubit.dart';
+import 'package:news/features/Auth/view_model/states.dart';
 import 'package:news/features/home/view/screens/home_screen.dart';
-import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = '/login-screen';
+class LoginScreen extends StatelessWidget {
+  static const String routeName = '/login_screen';
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
+  const LoginScreen({super.key});
 
-class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController passController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-  late UserProvider userProvider;
   @override
   Widget build(BuildContext context) {
-    userProvider = Provider.of<UserProvider>(context, listen: false);
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Form(
-          key: formKey,
+    return BlocProvider(
+      create: (context) => AuthCubit(AuthApiService()),
+      child: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state is LoginSuccessState) {
+            context.read<UserProvider>().updateUser(state.user);
+            UIUtil.showSuccMessage('Login Successfully');
+            Navigator.pushReplacementNamed(
+              context,
+              HomeScreen.routeName,
+            );
+          } else if (state is LoginErrorState) {
+            UIUtil.showSuccMessage(state.message);
+          }
+        },
+        builder: (context, state) {
+          var cubit = AuthCubit.get(context);
 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/news_logo_light.png',
-                fit: BoxFit.fill,
-                height: MediaQuery.sizeOf(context).height * 0.2,
-              ),
-              SizedBox(height: 24),
-              DefaultTextFormField(
-                hintText: 'Email',
-                controller: emailController,
-                prefixIcon: 'email',
-                validator: (value) {
-                  if (value == null || value.length < 5) return 'Invalid email';
-                  return null;
-                },
-              ),
-              SizedBox(height: 16),
-              DefaultTextFormField(
-                hintText: 'Password',
-                controller: passController,
-                prefixIcon: 'lock',
-                isPass: true,
-                validator: (value) {
-                  if (value == null || value.length < 8)
-                    return 'Invalid password & Password Must be at least 8 character';
-                  return null;
-                },
-              ),
-              SizedBox(height: 24),
-              DefaultElevatedButton(onPressed: login, text: 'Login'),
-              SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don’t Have Account ?',
-                    style: Theme.of(context).textTheme.titleMedium,
+          return Scaffold(
+            backgroundColor: AppTheme.white,
+            body: SafeArea(
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Form(
+                    key: cubit.loginFormKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          AppImages.logo,
+                          fit: BoxFit.fill,
+                          height: MediaQuery.sizeOf(context).height * 0.2,
+                        ),
+                        const SizedBox(height: 24),
+
+                   
+                        DefaultTextFormField(
+                          hintText: 'Email',
+                          controller: cubit.loginEmailController,
+                          prefixIcon: 'email',
+                          validator: Validator.validateEmail,
+                        ),
+                        const SizedBox(height: 16),
+
+                
+                        DefaultTextFormField(
+                          hintText: 'Password',
+                          controller: cubit.loginPassController,
+                          prefixIcon: 'lock',
+                          isPass: true,
+                          validator: Validator.validatePassword,
+                        ),
+                        const SizedBox(height: 24),
+
+                    
+                        state is LoginLoadingState
+                            ? const CircularProgressIndicator()
+                            : DefaultElevatedButton(
+                                onPressed: () => cubit.login(),
+                                text: 'Login',
+                              ),
+                        const SizedBox(height: 24),
+
+                     
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Don’t Have Account ?',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(color: AppTheme.black),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  RegisterScreen.routeName,
+                                );
+                              },
+                              child: const Text('Create Account'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        RegisterScreen.routeName,
-                      );
-                    },
-                    child: Text('Create Account'),
-                  ),
-                ],
+                ),
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
-  }
-
-  void login() {
-    if (formKey.currentState!.validate()) {
-      FirebaseService.login(
-            email: emailController.text,
-            password: passController.text,
-          )
-          .then((user) {
-            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-            UIUtil.showSuccMessage("Login Successfully");
-            userProvider.updateUser(user);
-          })
-          .catchError((error) {
-            String? message;
-            if (error is FirebaseAuthException) {
-              message = error.message;
-            }
-            ErrorIndicator();
-          });
-    }
   }
 }
