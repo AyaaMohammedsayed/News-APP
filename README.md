@@ -7,17 +7,15 @@ A modern Flutter news application that delivers categorized and source-based new
 
 ### Screenshots
 
-| Splash                            | Login                           | Home                          |
+| Splash                            | Register                           | Login                          |
 | --------------------------------- | ------------------------------- | ----------------------------- |
-| ![Splash](screenshots/splash.png) | ![Login](screenshots/login.png) | ![Home](screenshots/home.png) |
+| ![Splash](assets/screens/splash.png) | ![Register](assets/screens/register.jpg) | ![Login](assets/screens/login.jpg) |
 
-| Categories                                | News                          | News Details                        |
+| Home                                | News                          | Search                        |
 | ----------------------------------------- | ----------------------------- | ----------------------------------- |
-| ![Categories](screenshots/categories.png) | ![News](screenshots/news.png) | ![Details](screenshots/details.png) |
+| ![Home](assets/screens/home.png) | ![News](assets/screens/news.png) | ![search](assets/screens/search.png) |
 
-| Light Theme                     | Dark Theme                    | Profile                             |
-| ------------------------------- | ----------------------------- | ----------------------------------- |
-| ![Light](screenshots/light.png) | ![Dark](screenshots/dark.png) | ![Profile](screenshots/profile.png) |
+
 
 ---
 
