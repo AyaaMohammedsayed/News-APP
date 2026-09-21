@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.13.1"
+  bloc:
+    dependency: transitive
+    description:
+      name: bloc
+      sha256: e03b235924e4f509c27b5d6b2f949200e0a91149a9818b4f65eeb56662b75413
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.2.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -49,6 +57,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  checked_yaml:
+    dependency: transitive
+    description:
+      name: checked_yaml
+      sha256: "959525d3162f249993882720d52b7e0c833978df229be20702b33d48d91de70f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.4"
+  cli_util:
+    dependency: transitive
+    description:
+      name: cli_util
+      sha256: ff6785f7e9e3c38ac98b2fb035701789de90154024a75b6cb926445e83197d1c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.2"
   clock:
     dependency: transitive
     description:
@@ -110,6 +134,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bloc:
+    dependency: "direct main"
+    description:
+      name: flutter_bloc
+      sha256: cf51747952201a455a1c840f8171d273be009b932c75093020f9af64f2123e38
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.1"
+  flutter_launcher_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_icons
+      sha256: "526faf84284b86a4cb36d20a5e45147747b7563d921373d4ee0559c54fcdbcea"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -184,6 +224,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.10.1"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: "1ca20c894b1717686a2319b8548763d812bc0aabdac580420a44c5178c57a867"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.3"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: "2a743920d81b7910627f68ee2c9ac1fc0bfee32b9fc3403587d7c6791ca12f80"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.12.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -437,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.6"
+  timeago:
+    dependency: "direct main"
+    description:
+      name: timeago
+      sha256: b05159406a97e1cbb2b9ee4faa9fb096fe0e2dfcd8b08fcd2a00553450d3422e
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.1"
   typed_data:
     dependency: transitive
     description:

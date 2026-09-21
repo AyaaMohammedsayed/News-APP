@@ -39,6 +39,9 @@ dependencies:
   flutter_svg: ^2.3.0
   shared_preferences: ^2.5.5
   provider: ^6.1.5+1
+  timeago: ^3.7.1
+  flutter_bloc: ^9.1.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +54,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/news_logo_light.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
