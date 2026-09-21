@@ -1,0 +1,13 @@
+flutter_native_splash:
+  color: "#ffffff"
+  color_dark: "#171717"
+  image: assets/images/news_logo_light.png
+  image_dark: assets/images/news_logo.png
+  android_12:
+    color: "#ffffff"
+    color_dark: "#171717"
+    image: assets/images/news_logo_light.png
+    image_dark: assets/images/news_logo.png
+
+
+    branding_bottom_padding: 24
