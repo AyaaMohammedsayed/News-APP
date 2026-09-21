@@ -24,12 +24,21 @@ class NewItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
-              news.urlToImage??'https://cdn0.iconfinder.com/data/icons/web-ui-19/160/no_image-256.png',
-              width: MediaQuery.sizeOf(context).width,
-              fit: BoxFit.fill,
-              height: MediaQuery.sizeOf(context).height * 0.25,
-            ),
-          ),
+  (news.urlToImage != null && news.urlToImage!.trim().isNotEmpty)
+      ? news.urlToImage!
+      : 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&auto=format&fit=crop',
+  width: MediaQuery.sizeOf(context).width,
+  height: MediaQuery.sizeOf(context).height * 0.25,
+  fit: BoxFit.cover,
+  errorBuilder: (context, error, stackTrace) {
+    return Image.network(
+      'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&auto=format&fit=crop',
+      width: MediaQuery.sizeOf(context).width,
+      height: MediaQuery.sizeOf(context).height * 0.25,
+      fit: BoxFit.cover,
+    );
+  },
+),),
           SizedBox(height: 10),
           Text(
             news.title!,

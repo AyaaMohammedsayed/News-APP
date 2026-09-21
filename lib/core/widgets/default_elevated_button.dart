@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/Theme/app_theme.dart';
 
 class DefaultElevatedButton extends StatelessWidget {
-  String text;
+  final String text; // إضافة final
+  final VoidCallback onPressed; // إضافة final
 
-  VoidCallback onPressed;
-  DefaultElevatedButton({required this.onPressed, required this.text});
+  const DefaultElevatedButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(MediaQuery.of(context).size.width, 56)
+        fixedSize: Size(MediaQuery.of(context).size.width, 56),
+        backgroundColor: AppTheme.black,
       ),
-      
-      onPressed: onPressed, child: Text(text,
-    style: Theme.of(context).textTheme.titleLarge
-    
-    ));
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(color: AppTheme.white),
+      ),
+    );
   }
 }

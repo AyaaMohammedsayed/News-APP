@@ -9,4 +9,5 @@ class AppImages {
   static const String theme = 'assets/icons/theme.svg';
   static const String language = 'assets/icons/language.svg';
   static const String home = 'assets/icons/home.svg';
+  static const String logo =  'assets/images/news_logo_light.png';
 }
