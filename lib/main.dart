@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news/core/provider/settings.dart';
+import 'package:news/features/Auth/login_screen.dart';
+import 'package:news/features/Auth/register_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:news/core/Theme/app_theme.dart';
 import 'package:news/features/home/view/screens/home_screen.dart';
 
-void main() {
+void main()  async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
   runApp(
     ChangeNotifierProvider(
       create: (context) => SettingServicesProvider(),
@@ -30,8 +36,10 @@ class NewsApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routes: {
             HomeScreen.routeName: (_) => HomeScreen(),
+            LoginScreen.routeName:(_)=>LoginScreen(),
+            RegisterScreen.routeName:(_)=>RegisterScreen()
           },
-          initialRoute: HomeScreen.routeName,
+          initialRoute: RegisterScreen.routeName,
           
       
           theme: AppTheme.light,
