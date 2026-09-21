@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news/features/category/category_model.dart';
 import 'package:news/features/category/category_view.dart';
 import 'package:news/features/home/view/widgets/home_drawer.dart';
+import 'package:news/features/news/new_view.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -25,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: categoryModel == null ? Text('Home') : Text(categoryModel!.name),
       ),
       body: 
-      // categoryModel == null
-           CategoryView(onChangeCategory: onChangeCategory)
-          // : NewView(categoryId: categoryModel!.id),
+      categoryModel == null
+           ?Expanded(child: CategoryView(onChangeCategory: onChangeCategory))
+          : Expanded(child: NewView(categoryId: categoryModel!.id)),
     );
   }
 

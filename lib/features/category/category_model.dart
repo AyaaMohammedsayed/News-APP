@@ -13,7 +13,7 @@ class CategoryModel {
     CategoryModel(name: 'General', id: 'general', imageName: "general"),
     CategoryModel(name: 'Health', id: 'health', imageName: "health"),
     CategoryModel(name: 'Science', id: 'science', imageName: "sceince"),
-    CategoryModel(name: 'Sport', id: 'sports', imageName: "sport"),
+    CategoryModel(name: 'Sport', id: 'sports', imageName: "sports"),
     CategoryModel(name: 'Technology', id: 'technology', imageName: "tech"),
 
   ];
