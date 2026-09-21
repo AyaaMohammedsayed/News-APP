@@ -8,8 +8,9 @@ import 'package:news/features/home/data/models/source.dart';
 
 import 'package:news/features/home/view_model/new_cubit.dart';
 import 'package:news/features/home/view_model/news_states.dart';
-import 'package:news/features/news/new_item.dart';
-import 'package:news/features/news/new_tab.dart';
+import 'package:news/features/news/view/widgets/new_item.dart';
+import 'package:news/features/news/view/widgets/new_tab.dart';
+
 
 
 class NewView extends StatefulWidget {

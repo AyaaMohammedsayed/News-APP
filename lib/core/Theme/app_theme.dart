@@ -51,7 +51,7 @@ class AppTheme {
         color: gray,
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
+     inputDecorationTheme: InputDecorationTheme(
       prefixIconColor: white,
       suffixIconColor: white,
       filled: true,
@@ -69,7 +69,9 @@ class AppTheme {
         borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(color: white),
       ),
+    
     ),
+ 
   );
   static ThemeData light = ThemeData(
         scaffoldBackgroundColor: white,
@@ -116,22 +118,22 @@ class AppTheme {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      prefixIconColor: black,
-      suffixIconColor: black,
+      prefixIconColor: white,
+      suffixIconColor: white,
       filled: true,
-      fillColor: white,
+      fillColor: black,
       hintStyle: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
-        color: black,
+        color: white,
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
-        borderSide: BorderSide(color: black),
+        borderSide: BorderSide(color: white),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
-        borderSide: BorderSide(color: black),
+        borderSide: BorderSide(color: white),
       ),
     ),
   );

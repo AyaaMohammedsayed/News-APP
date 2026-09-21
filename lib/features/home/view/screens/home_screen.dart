@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:news/features/category/category_model.dart';
-import 'package:news/features/category/category_view.dart';
+
+import 'package:news/features/category/data/category_model.dart';
+import 'package:news/features/category/view/widgets/category_view.dart';
 import 'package:news/features/home/view/widgets/home_drawer.dart';
-import 'package:news/features/news/new_view.dart';
+import 'package:news/features/news/view/widgets/new_view.dart';
 
 
 class HomeScreen extends StatefulWidget {

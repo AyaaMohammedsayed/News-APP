@@ -3,13 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news/core/Theme/app_theme.dart';
 
 class DefaultTextFormField extends StatefulWidget {
-  String hintText;
-  String? prefixIcon;
-  TextEditingController? controller;
-  void Function(String)? onChange;
-  String? Function(String?)? validator;
-  bool isPass;
-  DefaultTextFormField({
+  final String hintText;
+  final String? prefixIcon;
+  final TextEditingController? controller;
+  final void Function(String)? onChange;
+  final String? Function(String?)? validator;
+  final bool isPass;
+
+  const DefaultTextFormField({
+    super.key,
     required this.hintText,
     this.controller,
     this.onChange,
@@ -23,12 +25,18 @@ class DefaultTextFormField extends StatefulWidget {
 }
 
 class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
-  @override
-     late bool obscurePassword = widget.isPass;
-  Widget build(BuildContext context) {
+  late bool obscurePassword;
 
+  @override
+  void initState() {
+    super.initState();
+    obscurePassword = widget.isPass;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return TextFormField(
-     
+      style: TextStyle(color: AppTheme.white),
       onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
@@ -37,31 +45,29 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
       obscureText: obscurePassword,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        prefixIcon:
-            widget.prefixIcon == null
-                ? null
-                : SvgPicture.asset(
-                  'assets/icons/${widget.prefixIcon}.svg',
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.scaleDown,
+        prefixIcon: widget.prefixIcon == null
+            ? null
+            : SvgPicture.asset(
+                'assets/icons/${widget.prefixIcon}.svg',
+                width: 24,
+                height: 24,
+                fit: BoxFit.scaleDown,
+              ),
+        suffixIcon: widget.isPass
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    obscurePassword = !obscurePassword;
+                  });
+                },
+                icon: Icon(
+                  obscurePassword
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  color: AppTheme.white,
                 ),
-        suffixIcon:
-            widget.isPass
-                ? IconButton(
-                                    onPressed: () {
-                          obscurePassword = !obscurePassword;
-                    setState(() {
-                
-                    });
-                  },
-                  icon: Icon(
-                    color: AppTheme.gray,
-                    obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                  ),
-
-                )
-                : null,
+              )
+            : null,
       ),
     );
   }
