@@ -129,7 +129,7 @@ late SettingServicesProvider provider;
   }
 
   void resetSelectedCategoryModel() {
-    Navigator.pop(context); 
+  
     if (categoryModel == null) return;
     setState(() {
       categoryModel = null;
