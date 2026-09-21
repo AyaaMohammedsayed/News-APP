@@ -77,7 +77,10 @@ class AuthCubit extends Cubit<AuthState> {
     }
     return error.toString().replaceAll('Exception: ', '');
   }
-
+Future<void> logout() async {
+  await FirebaseAuth.instance.signOut();
+  emit(LogoutSuccessState());
+}
   @override
   Future<void> close() {
     regEmailController.dispose();
