@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news/core/Theme/app_theme.dart';
 import 'package:news/features/home/view/screens/home_screen.dart';
 
 void main() {
@@ -20,6 +21,9 @@ class NewsApp extends StatelessWidget {
           HomeScreen.routeName:(_)=>HomeScreen()
         },
         initialRoute: HomeScreen.routeName,
+        theme: AppTheme.light,
+        themeMode: ThemeMode.dark,
+        darkTheme: AppTheme.dark,
       ),
     );
   }
