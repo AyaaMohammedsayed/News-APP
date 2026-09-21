@@ -100,7 +100,6 @@ class HomeDrawer extends StatelessWidget {
                   ),
                   const Divider(height: 32, color: Colors.grey),
 
-                  // زر تسجيل الخروج (Logout)
                   InkWell(
                     onTap: () async {
                       Navigator.of(context).pop(); 

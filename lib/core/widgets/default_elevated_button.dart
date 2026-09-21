@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:news/core/Theme/app_theme.dart';
 
 class DefaultElevatedButton extends StatelessWidget {
-  final String text; // إضافة final
-  final VoidCallback onPressed; // إضافة final
+  final String text; 
+  final VoidCallback onPressed;
 
   const DefaultElevatedButton({
     super.key,
